@@ -3,6 +3,8 @@ import Footer from "../components/Footer";
 import { useRouter } from "next/router";
 import { format } from "date-fns";
 import InfoCard from "../components/InfoCard";
+import Head from "next/head";
+import Map from "../components/Map";
 
 const Search = ({ searchResults }) => {
   const { query } = useRouter();
@@ -15,6 +17,12 @@ const Search = ({ searchResults }) => {
 
   return (
     <div>
+      <Head>
+        <title>Search | Airbnb Clone</title>
+        <meta name="description" content="Airbnb Clone" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <Header placeholder={`${location} | ${range} | ${noOfGuest} guests`} />
 
       <main className="flex">
@@ -49,6 +57,10 @@ const Search = ({ searchResults }) => {
               )
             )}
           </div>
+        </section>
+
+        <section className="hidden xl:inline-flex xl:min-w-[600px]">
+          <Map searchResults={searchResults} />
         </section>
       </main>
 
